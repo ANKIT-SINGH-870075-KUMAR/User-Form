@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+
+    <!--Button Function Container-->
+    <div class="btn-container">
+        <button type="submit" onclick="addUser()">ADD USER</button>
+        <button type="submit" onclick="cancelUser()">CANCEL USER</button>
+    </div>
+
+
+
+    <!-- User Form -->
+    <header class="container">
+        <div class="User-bg" id="add-user">
+            <!-- User-1 -->
+            <div class="User-1">
+                <span>
+                    <h1>First Name :</h1>
+                    <input type="textbox" id="first" placeholder="Enter your First Name">
+                </span>
+                <span>
+                    <h1>Middle Name :</h1>
+                    <input type="textbox" id="middle" placeholder="Enter your Middle Name">
+                </span>
+                <span>
+                    <h1>Last Name :</h1>
+                    <input type="textbox" id="last" placeholder="Enter your Last Name">
+                </span>
+            </div>
+
+            <!-- User-2 -->
+            <div class="User-2" id="User2">
+                <span>
+                    <h1>Email :</h1>
+                    <input type="Email" id="email" placeholder="Enter Your Email..">
+                </span>
+                <span>
+                    <h1>Password :</h1>
+                    <input type="password" id="password" placeholder="Enter Your Password.." onkeypress="keyPress()"
+                        onmouseleave="displayalert()">
+
+                </span>
+                <p></p>
+            </div>
+
+            <!-- User-3 -->
+            <div class="User-3">
+                <div>
+                    <span>
+                        <h1>Age :</h1>
+                        <input type="number" id="age" placeholder="Enter Your age...">
+                    </span>
+                    <span>
+                        <h1>Date Of Birth :</h1>
+                        <input type="date" id="birthdate" placeholder="Enter Your Birth Date...">
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        <h1>Hobbies :</h1>
+                        <ul>
+                            <li>
+                                <h1>Dancing</h1>
+                                <input id="hob1" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Singing</h1>
+                                <input id="hob2" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Reading Book</h1>
+                                <input id="hob3" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Video Gaming</h1>
+                                <input id="hob4" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Cricket</h1>
+                                <input id="hob5" type="checkbox">
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <!-- User-4 -->
+            <div class="User-4">
+                <span>
+                    <!-- <h1>Address :</h1>
+                    <textarea onmouseover="toggleopen()" id="area" cols="12" rows="2"></textarea> -->
+                    <div id="address">
+                        <h1>Address :</h1>
+                        <textarea cols="90" rows="5" id="addressDetails"></textarea>
+                        <div class="address-bg">
+                            <span>
+                                <h1>Country :</h1>
+                                <select class="cou" id="country" onchange="countryChanged('add')">
+                                </select>
+                            </span>
+                            <span>
+                                <h1>State :</h1>
+                                <select id="state" onchange="stateChanged('add')">
+                                    <option>Enter Your State</option>
+                                </select>
+                            </span>
+                            <span>
+                                <h1>City :</h1>
+                                <select id="city">
+                                    <option>Enter Your City</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <h1>Phone no :</h1>
+                    <input type="number" id="phone" placeholder="Enter Your Phone Number...">
+                </span>
+                <span>
+                    <h1>Gender :</h1>
+                    <ul>
+                        <li>
+                            <h1>Male</h1>
+                            <input type="radio" id="male" checked="true" name="Gender">
+                        </li>
+                        <li>
+                            <h1>Female</h1>
+                            <input type="radio" id="female" name="Gender">
+                        </li>
+                    </ul>
+                </span>
+            </div>
+
+            <!-- User-5 -->
+            <div class="User-5">
+                <h1>Educatinal Details</h1>
+                <nav>
+                    <span>
+                        <h1>12th class :</h1>
+                        <select id="class">
+                            <option>Enter your Educatinal Details</option>
+                            <option>Science</option>
+                            <option>Commerce</option>
+                            <option>Art</option>
+                        </select>
+                    </span>
+                    <span>
+                        <h1>Graduation :</h1>
+                        <select id="Graduation">
+                            <option>Enter your Educatinal Details</option>
+                            <option>Bachelor Of Science</option>
+                            <option>Bachelor Of Commerce</option>
+                            <option>Bachelor Of Art</option>
+                        </select>
+                    </span>
+                    <span>
+                        <h1>Post Graduation :</h1>
+                        <select id="PostGraduation">
+                            <option>Enter your Educatinal Details</option>
+                            <option>Master Of Science</option>
+                            <option>Master Of Commerce</option>
+                            <option>Master Of Art</option>
+                        </select>
+                    </span>
+                </nav>
+            </div>
+
+            <!-- User-6 -->
+            <div class="User-6">
+                <button type="submit" onclick="SubmitUser()">Submit User</button>
+            </div>
+        </div>
+
+        <div class="User-Summary" id="summary">
+            <h1><u>User Summary</u></h1>
+            <div class="table-container">
+                <table class="table" cellspacing="0">
+                    <thead class="table-head">
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone No</th>
+                        <th>Email ID</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="table">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="User-bg" id="update-user">
+            <!-- User-1 -->
+            <div class="User-1">
+                <span>
+                    <h1>First Name :</h1>
+                    <input type="textbox" id="first1" placeholder="Enter your First Name">
+                </span>
+                <span>
+                    <h1>Middle Name :</h1>
+                    <input type="textbox" id="middle1" placeholder="Enter your Middle Name">
+                </span>
+                <span>
+                    <h1>Last Name :</h1>
+                    <input type="textbox" id="last1" placeholder="Enter your Last Name">
+                </span>
+            </div>
+
+            <!-- User-2 -->
+            <div class="User-2" id="User2">
+                <span>
+                    <h1>Email :</h1>
+                    <input type="Email" id="email1" placeholder="Enter Your Email..">
+                </span>
+                <span>
+                    <h1>Password :</h1>
+                    <input type="password" id="password1" placeholder="Enter Your Password.." onkeypress="keyPress()"
+                        onmouseleave="displayalert()">
+
+                </span>
+                <p></p>
+            </div>
+
+            <!-- User-3 -->
+            <div class="User-3">
+                <div>
+                    <span>
+                        <h1>Age :</h1>
+                        <input type="number" id="age1" placeholder="Enter Your age...">
+                    </span>
+                    <span>
+                        <h1>Date Of Birth :</h1>
+                        <input type="date" id="birthdate1" placeholder="Enter Your Birth Date...">
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        <h1>Hobbies :</h1>
+                        <ul>
+                            <li>
+                                <h1>Dancing</h1>
+                                <input id="hob11" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Singing</h1>
+                                <input id="hob22" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Reading Book</h1>
+                                <input id="hob33" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Video Gaming</h1>
+                                <input id="hob44" type="checkbox">
+                            </li>
+                            <li>
+                                <h1>Cricket</h1>
+                                <input id="hob55" type="checkbox">
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <!-- User-4 -->
+            <div class="User-4">
+                <span>
+                    <!-- <h1>Address :</h1>
+                    <textarea onmouseover="toggleopen()" id="area" cols="12" rows="2"></textarea> -->
+                    <div id="address">
+                        <h1>Address :</h1>
+                        <textarea cols="90" rows="5" id="addressDetails1"></textarea>
+                        <div class="address-bg">
+                            <span>
+                                <h1>Country :</h1>
+                                <select class="cou" id="country1" onchange="countryChanged()">
+                                </select>
+                            </span>
+                            <span>
+                                <h1>State :</h1>
+                                <select id="state1" onchange="stateChanged()">
+                                    <option>Enter Your State</option>
+                                </select>
+                            </span>
+                            <span>
+                                <h1>City :</h1>
+                                <select id="city1">
+                                    <option>Enter Your City</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <h1>Phone no :</h1>
+                    <input type="number" id="phone1" placeholder="Enter Your Phone Number...">
+                </span>
+                <span>
+                    <h1>Gender :</h1>
+                    <ul>
+                        <li>
+                            <h1>Male</h1>
+                            <input type="radio" id="male1" checked="true" name="Gender">
+                        </li>
+                        <li>
+                            <h1>Female</h1>
+                            <input type="radio" id="female1" name="Gender">
+                        </li>
+                    </ul>
+                </span>
+            </div>
+
+            <!-- User-5 -->
+            <div class="User-5">
+                <h1>Educatinal Details</h1>
+                <nav>
+                    <span>
+                        <h1>12th class :</h1>
+                        <select id="class1">
+                            <option>Enter your Educatinal Details</option>
+                            <option>Science</option>
+                            <option>Commerce</option>
+                            <option>Art</option>
+                        </select>
+                    </span>
+                    <span>
+                        <h1>Graduation :</h1>
+                        <select id="Graduation1">
+                            <option>Enter your Educatinal Details</option>
+                            <option>Bachelor Of Science</option>
+                            <option>Bachelor Of Commerce</option>
+                            <option>Bachelor Of Art</option>
+                        </select>
+                    </span>
+                    <span>
+                        <h1>Post Graduation :</h1>
+                        <select id="PostGraduation1">
+                            <option>Enter your Educatinal Details</option>
+                            <option>Master Of Science</option>
+                            <option>Master Of Commerce</option>
+                            <option>Master Of Art</option>
+                        </select>
+                    </span>
+                </nav>
+            </div>
+
+            <!-- User-6 -->
+            <div class="User-6">
+                <button type="submit" onclick="updateUser()">Update User</button>
+            </div>
+        </div>
+    </header>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>

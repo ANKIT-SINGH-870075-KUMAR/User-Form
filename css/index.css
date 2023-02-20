@@ -1,0 +1,519 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Button Function Container */
+.btn-container{
+    display: flex;
+    width: 100%;
+    height: 12vh;
+    padding: 1vmax;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn-container button:nth-child(1){
+    padding: 0.9vmax;
+    background: none;
+    border: 1px solid green;
+    font: 300 1vmax sans-serif;
+    color: green;
+    transition: all 0.5s;
+    border-radius: 30px;
+    box-shadow: 0 1px 5px green;
+}
+
+.btn-container button:nth-child(1):hover{
+    background-color: green;
+    color: white;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.btn-container button:nth-child(2){
+    padding: 0.9vmax;
+    background: none;
+    border: 1px solid red;
+    font: 300 1vmax sans-serif;
+    color: red;
+    transition: all 0.5s;
+    box-shadow: 0 1px 5px red;
+    border-radius: 30px;
+}
+
+.btn-container button:nth-child(2):hover{
+    background-color: red;
+    color: white;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/*main-container*/
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 2vmax;
+    flex-direction: column;
+}
+
+/*User Form*/
+.container .User-bg{
+    width: 70%;
+    height: auto;
+    display: none;
+    padding: 1vmax;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+}
+
+/* User-1 , User-2, User-3, User-4, User-5, User-6 are design together */
+.container .User-bg .User-1,
+.container .User-bg .User-2,
+.container .User-bg .User-3,
+.container .User-bg .User-4,
+.container .User-bg .User-5,
+.container .User-bg .User-6{
+    display: flex;
+    width: 100%;
+}
+
+/* User-1 */
+.container .User-bg .User-1{
+    display: flex;
+    justify-content: space-between;
+    padding: 1vmax;
+    height: 38vh;
+    flex-direction: column;
+}
+
+.container .User-bg .User-1 span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container .User-bg .User-1 span h1{
+    font: 300 1.2vmax sans-serif;
+}
+
+.container .User-bg .User-1 span input{
+    padding: 1.5vmax;
+    font: 300 1.1vmax sans-serif;
+    border: none;
+    width: 80%;
+    outline: none;
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+    background: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container .User-bg .User-1 span input:hover{
+    cursor: pointer;
+    border-radius: 30px;
+    transform: translateZ(1vmax) translateY(-0.5vmax);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* User-2 */
+.container .User-bg .User-2{
+    display: flex;
+    padding: 1vmax;
+    height: 30vh;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.container .User-bg .User-2 span{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container .User-bg .User-2 span h1{
+    font: 300 1.2vmax sans-serif;
+}
+
+.container .User-bg .User-2 span input{
+    padding: 1.5vmax;
+    font: 300 1.1vmax sans-serif;
+    border: none;
+    width: 80%;
+    outline: none;
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+    background: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container .User-bg .User-2 span input:hover{
+    cursor: pointer;
+    border-radius: 30px;
+    transform: translateZ(1vmax) translateY(-0.5vmax);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+p{
+    height: 0vh;
+    width: 60%;
+    padding: 1.5vmax;
+    font: 600 1.8vmax sans-serif;
+    text-align: center;
+    color: white;
+    transform: scale(0);
+}
+
+
+/* User-3 */
+.container .User-bg .User-3{
+    display: flex;
+    padding: 1vmax;
+    flex-direction: column;
+    height: 25vh;
+    justify-content: space-between;
+}
+
+.container .User-bg .User-3 div:nth-child(1){
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.container .User-bg .User-3 span{
+    display: flex;
+    align-items: center;
+}
+
+.container .User-bg .User-3 span h1{
+    font: 300 1.1vmax sans-serif;
+}
+
+.container .User-bg .User-3 div:nth-child(1) span input{
+    padding: 1.5vmax;
+    font: 300 1.1vmax sans-serif;
+    border: none;
+    width: 60%;
+    outline: none;
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+    background: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container .User-bg .User-3 div:nth-child(1) span input:hover{
+    cursor: pointer;
+    border-radius: 30px;
+    transform: translateZ(1vmax) translateY(-0.5vmax);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.container .User-bg .User-3 div:nth-child(2){
+    display: flex;
+    padding: 1vmax;
+}
+
+.container .User-bg .User-3 div:nth-child(2) span{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .User-bg .User-3 div:nth-child(2) span ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .User-bg .User-3 div:nth-child(2) span ul li{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 1vmax;
+}
+
+.container .User-bg .User-3 div:nth-child(2) span ul li input{
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+}
+
+
+/* User-4 */
+.container .User-bg .User-4{
+    display: flex;
+    padding: 1vmax;
+    height: 100vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.container .User-bg .User-4 span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container .User-bg .User-4 span h1{
+    font: 300 1.2vmax sans-serif;
+}
+
+.container .User-bg .User-4 span:nth-child(1) textarea{
+    padding: 1vmax;
+    font: 300 1.1vmax sans-serif;
+    border: none;
+    width: 100%;
+    outline: none;
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+    background: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container .User-bg .User-4 span:nth-child(1) textarea:hover{
+    cursor: pointer;
+    border-radius: 30px;
+    transform: translateZ(1vmax) translateY(-0.5vmax);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.container .User-bg .User-4 span:nth-child(2) input{
+    padding: 1.5vmax;
+    font: 300 1.1vmax sans-serif;
+    border: none;
+    width: 88%;
+    outline: none;
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+    background: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container .User-bg .User-4 span:nth-child(2) input:hover{
+    cursor: pointer;
+    border-radius: 30px;
+    transform: translateZ(1vmax) translateY(-0.5vmax);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.container .User-bg .User-4 span #address{
+    padding: 1vmax;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    height: 80vh;
+    transition: all 5s;
+    border-radius: 30px;
+}
+
+.container .User-bg .User-4 span #address .address-bg{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 45vh;
+}
+
+.container .User-bg .User-4 span #address .address-bg span{
+    width: 100%;
+    display: flex;
+    padding: 1vmax;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .User-bg .User-4 span #address .address-bg span select{
+    padding: 1.5vmax;
+    font: 300 1.1vmax sans-serif;
+    border: none;
+    width: 90%;
+    outline: none;
+    margin-left: 0.5vmax;
+    transition: all 0.7s;
+    background: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container .User-bg .User-4 span #address .address-bg span select:hover{
+    cursor: pointer;
+    border-radius: 30px;
+    transform: translateZ(1vmax) translateY(-0.5vmax);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.container .User-bg .User-4 span:nth-child(3){
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    height: 10vh;
+} 
+
+.container .User-bg .User-4 span:nth-child(3) ul{
+    display: flex;
+    justify-content: space-around;
+    width: 58%;
+    align-items: center;
+}
+
+.container .User-bg .User-4 span:nth-child(3) ul li{
+    display: flex;
+    list-style-type: none;
+}
+
+.container .User-bg .User-4 span:nth-child(3) ul li input{
+    margin-left: 0.5vmax;
+}
+
+/* User-5 */
+.container .User-bg .User-5{
+    display: flex;
+    padding: 2vmax;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .User-bg .User-5 nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    height: 33vh;
+    justify-content: space-between;
+  }
+  
+  .container .User-bg .User-5 span{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+  }
+  
+  .container .User-bg .User-5 h1{
+      font: 600 2.5vmax sans-serif;
+      padding: 1vmax;
+  }
+  
+  .container .User-bg .User-5 nav span h1{
+      font: 300 1.2vmax sans-serif;
+  }
+  
+  .container .User-bg .User-5 nav span select{
+      padding: 1.5vmax;
+      font: 300 1.1vmax sans-serif;
+      border: none;
+      width: 80%;
+      outline: none;
+      margin-left: 0.5vmax;
+      transition: all 0.7s;
+      background: none;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .container .User-bg .User-5 nav span select:hover{
+      cursor: pointer;
+      border-radius: 30px;
+      transform: translateZ(1vmax) translateY(-0.5vmax);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+  }
+
+/* User-6 */
+.container .User-bg .User-6{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vmax;
+    width: 100%;
+}
+
+.container .User-bg .User-6 button{
+    padding: 1vmax;
+    font: 300 1.3vmax sans-serif;
+    transition: all 3s;
+    background: none;
+    border: 1px solid black;
+    outline: none;
+}
+
+.container .User-bg .User-6 button:hover{
+    transform: scale(0.8) translateZ(0.5vmax);
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+/* user summary */
+.User-Summary{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    /* min-height: 150vh; */
+    justify-content: space-evenly;
+}
+
+.User-Summary .table-container{
+    width: 70%;
+    height: 80vh;
+}
+
+.table{
+    width: 100%;
+    border: 5px solid black;
+}
+
+.table .table-head{
+    background-color: black;
+    color: white;
+    font: 600 1.2vmax sans-serif;
+    height: 8vh;
+}
+
+.table-row{
+    border: 1px solid black;
+    padding: 1vmax;
+    font: 300 1vmax sans-serif;
+}
+
+.btn-Edit{
+    padding: 1vmax;
+    color: green;
+    background: none;
+    outline: none;
+    border: none;
+    font:  600 1vmax sans-serif;
+}
+
+.btn-Edit:hover{
+    cursor: pointer;
+}
+
+.btn-del{
+    padding: 1vmax;
+    color: red;
+    background: none;
+    outline: none;
+    border: none;
+    font:  600 1vmax sans-serif;
+}
+
+.btn-del:hover{
+    cursor: pointer;
+}
