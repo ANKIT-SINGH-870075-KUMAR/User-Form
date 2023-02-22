@@ -1,4 +1,18 @@
-// Add and close User
+const modal = document.querySelector(".modal");
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+window.addEventListener("click", windowOnClick);
+
+// add user and cancel user
 function addUser() {
     document.getElementById("add-user").style.display = "flex";
     var options = `<option>Enter Your Country</option>`;
@@ -12,8 +26,11 @@ function cancelUser() {
     document.getElementById("add-user").style.display = "none";
 }
 
-//Submit User Details
-function SubmitUser() {
+
+
+//submit user
+function submitUser() {
+    cancelUser();
     //Name
     var first = document.getElementById('first').value;
     var middle = document.getElementById('middle').value;
@@ -46,32 +63,20 @@ function SubmitUser() {
 
     //Address
     var AddressDetails = document.getElementById('addressDetails').value;
-    var country = document.getElementById('country').value;
-    var state = document.getElementById('state').value;
-    var city = document.getElementById('city').value;
-    console.log(country);
-    console.log(state);
-    console.log(city)
+    var Country = document.getElementById('country').value;
+    var State = document.getElementById('state').value;
+    var City = document.getElementById('city').value;
 
     //Phone number and Gender
-    var PhoneNo = document.getElementById('phone').value;
     var Male = document.getElementById('male');
     var female = document.getElementById('female');
-    var GENDER = [];
+    var Gender = [];
     if (Male.checked) {
-        GENDER = "Male";
+        Gender = "Male";
     }
     else if (female.checked) {
-        GENDER = "female";
+        Gender = "female";
     }
-
-    //Education Details
-    var Class = document.getElementById('class').value;
-    var Graduation = document.getElementById('Graduation').value;
-    var PostGraduation = document.getElementById('PostGraduation').value;
-    console.log(Class);
-    console.log(Graduation);
-    console.log(PostGraduation)
 
     var UserData = JSON.parse(localStorage.getItem("UserData"));
     let id = 1;
@@ -85,63 +90,169 @@ function SubmitUser() {
         name: Name,
         email: Email,
         password: Password,
-        Age: Age,
+        age: Age,
         dateOfBirth: BirthDate,
-        Hobbies: hobbies,
-        Address: {
+        hobbies: hobbies,
+        address: {
             addressDetails: AddressDetails,
-            country: country,
-            state: state,
-            city: city,
+            country: Country,
+            state: State,
+            city: City,
         },
-        phoneNo: PhoneNo,
-        Gender: GENDER,
-        education: {
-            class: Class,
-            graduation: Graduation,
-            postgraduation: PostGraduation,
-        },
+        gender: Gender,
     }
 
-    // if (validation(obj)) {
-    UserData.push(obj)
-    localStorage.setItem("UserData", JSON.stringify(UserData));
+    //Validation
+        if (!first || !middle || !last || !Email || !Password) {
+            // Name
+            if ((first.length == " ") || ((first.length == " ") && (middle.length != " ") && (last.length != " "))) {
+                document.getElementById('first').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('first').style.borderColor = "green";
+                if (first) {
+                    if (first.length < 5) {
+                        alert("Name is containing less than 5 alphabets")
+                        document.getElementById('first').style.borderColor = "red";
+                    }
+                    else if (first.length > 10) {
+                        alert("Name is containing more than 10 alphabets")
+                        document.getElementById('first').style.borderColor = "red";
+                    }
+                }
+                else {
+                    document.getElementById('first').style.borderColor = "green";
+                }
+            }
+            if ((middle.length == " ") || ((first.length != " ") && (middle.length == " ") && (last.length != " "))) {
+                document.getElementById('middle').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('middle').style.borderColor = "green";
+                if (middle) {
+                    if (middle.length < 5) {
+                        alert("Name is containing less than 5 alphabets")
+                        document.getElementById('middle').style.borderColor = "red";
+                    }
+                    else if (middle.length > 10) {
+                        alert("Name is containing more than 10 alphabets")
+                        document.getElementById('middle').style.borderColor = "red";
+                    }
+                }
+                else {
+                    document.getElementById('middle').style.borderColor = "green";
+                }
+            }
+            if ((last.length == " ") || ((first.length != " ") && (middle.length != " ") && (last.length == " "))) {
+                document.getElementById('last').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('last').style.borderColor = "green";
+                if (last) {
+                    if (last.length < 5) {
+                        alert("Name is containing less than 5 alphabets")
+                        document.getElementById('last').style.borderColor = "red";
+                    }
+                    else if (last.length > 10) {
+                        alert("Name is containing more than 10 alphabets")
+                        document.getElementById('last').style.borderColor = "red";
+                    }
+                }
+                else {
+                    document.getElementById('middle').style.borderColor = "green";
+                }
+            }
 
-    addRowInTable(obj);
-}
+            //Email and Password
+            if ((Email.length == " ") || (Email.length == " " && Password.length != " ")) {
+                document.getElementById('email').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('email').style.borderColor = "green";
+            }
+            if ((Password.length == " ") || (Email.length != " " && Password.length == " ")) {
+                document.getElementById('password').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('password').style.borderColor = "green";
+                if (Password) {
+                    if (Password.length < 5) {
+                        document.getElementById('password').style.borderColor = "red";
+                        document.getElementById('password').style.boxShadow = "0 5px 15px rgb(204 126 126 / 74%)";
+                    }
+                    else if (Password.length < 10) {
+                        document.getElementById('password').style.borderColor = "yellow";
+                        document.getElementById('password').style.boxShadow = "0 5px 15px rgb(226 232 100 / 97%)";
+                    }
+                    else if (Password.length < 15) {
+                        document.getElementById('password').style.borderColor = "green";
+                        document.getElementById('password').style.boxShadow = "0 5px 15px rgb(15 76 1 / 82%)";
+                    }
+                }
+                else {
+                    document.getElementById('password').style.borderColor = "green";
+                }
+            }
 
-// Password validation
-function keyPress() {
-    var Password = document.getElementById('password').value;
-    var b = document.querySelector('p');
-    var User2 = document.getElementById('User2');
-    b.style.transform = "scale(1)";
-    b.style.height = "10vh"
-    User2.style.height = "38vh"
-    if (Password.length < 4) {
-        b.innerHTML = "Week Password";
-        b.style.backgroundColor = "red";
-        b.style.color = "white";
-    }
-    else if (Password.length < 8) {
-        b.innerHTML = "Average Password";
-        b.style.backgroundColor = "yellow";
-        b.style.color = "black";
-    }
-    else {
-        b.innerHTML = "Strong Password";
-        b.style.backgroundColor = "green";
-        b.style.color = "white";
-    }
-}
+            //Age, Date Of Birth
+            if ((Age.length == " ") || (Age.length == " " && BirthDate.length != " ")) {
+                document.getElementById('age').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('age').style.borderColor = "green";
+                if (Age) {
+                    if (Age <= 0 || Age.length == " ") {
+                        alert("age does not exist")
+                        document.getElementById('age').style.borderColor = "red";
+                    }
+                    else if ((Age.length > 2 && Age > 100) || (Age > 100)) {
+                        alert("Invalid age")
+                        document.getElementById('age').style.borderColor = "red";
+                    }
+                }
+                else {
+                    document.getElementById('age').style.borderColor = "green";
+                }
+            }
+            if ((BirthDate.length == " ") || (Age.length != " " && BirthDate.length == " ")) {
+                document.getElementById('birthdate').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('birthdate').style.borderColor = "green";
+            }
 
-// identify Password quality
-function displayalert() {
-    var b = document.querySelector('p');
-    var User2 = document.getElementById('User2');
-    b.style.transform = "scale(0)";
-    b.style.height = "0vh"
-    User2.style.height = "30vh"
+            //Address Details , Country , State and City
+            if ((AddressDetails.length == " ") || (AddressDetails.length == " " && Country.length != " " && State.length != " " && City.length != " ")) {
+                document.getElementById('addressDetails').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('addressDetails').style.borderColor = "green";
+            }
+            if ((Country.length == " ") || (AddressDetails.length != " " && Country.length == " " && State.length != " " && City.length != " ")) {
+                document.getElementById('country').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('country').style.borderColor = "green";
+            }
+            if ((State.length == " ") || (AddressDetails.length != " " && Country.length != " " && State.length == " " && City.length != " ")) {
+                document.getElementById('state').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('state').style.borderColor = "green";
+            }
+            if ((City.length == " ") || (AddressDetails.length != " " && Country.length != " " && State.length != " " && City.length == " ")) {
+                document.getElementById('city').style.borderColor = "red";
+            }
+            else {
+                document.getElementById('city').style.borderColor = "green";
+            }
+            addUser()
+        }
+        else {
+            UserData.push(obj)
+            localStorage.setItem("UserData", JSON.stringify(UserData));
+            addRowInTable(obj);
+        }
 }
 
 //Default function call
@@ -163,6 +274,7 @@ function updateUserDataState(onload) {
     }
 }
 
+//add Data in Table
 function addRowInTable(user) {
     // Get the table body element in which you want to add row
     let table = document.getElementById("table");
@@ -184,9 +296,9 @@ function addRowInTable(user) {
     c6.classList = "table-row"
     // Insert data to cells
     c1.innerText = user.name
-    c2.innerText = user.Age
-    c3.innerText = user.Gender
-    c4.innerText = user.phoneNo
+    c2.innerText = user.age
+    c3.innerText = user.gender
+    c4.innerText = user.hobbies
     c5.innerText = user.email
     c6.innerHTML = `<button type='button' class='btn-Edit' onclick=editUser(${user.id})>Edit</button>&nbsp;&nbsp;&nbsp;<button type='button' class='btn-del' onclick=deleteUser(${user.id})>Delete</button>`
     // Append cells to row
@@ -201,6 +313,7 @@ function addRowInTable(user) {
     table.appendChild(row);
 }
 
+//Remove row in table
 function removeExistingRows() {
     let rows = document.getElementsByTagName("tr");
     for (var index = 1; index < rows.length;) {
@@ -209,9 +322,10 @@ function removeExistingRows() {
     }
 }
 
+//edit user
 function editUser(id) {
-    cancelUser();
-    document.getElementById('update-user').style.display = "flex";
+    toggleModal();
+    document.getElementById('modal-display').style.display = "block";
     localStorage.setItem("editUserId", id);
     var UserData = JSON.parse(localStorage.getItem("UserData"));
     var user = UserData.find(u => u.id === id);
@@ -234,9 +348,9 @@ function editUser(id) {
     document.getElementById('password1').value = user.password;
 
     //Age , Date of Birth and Hobbies
-    document.getElementById('age1').value = user.Age;
+    document.getElementById('age1').value = user.age;
     document.getElementById('birthdate1').value = user.dateOfBirth;
-    user.Hobbies.forEach(hobby => {
+    user.hobbies.forEach(hobby => {
         if (hobby === "Dancing") {
             document.getElementById('hob11').checked = true;
         } else if (hobby === "Singing") {
@@ -251,28 +365,24 @@ function editUser(id) {
     })
 
     //Address
-    document.getElementById('addressDetails1').value = user.Address.addressDetails;
-    document.getElementById('country1').value = user.Address.country;
+    document.getElementById('addressDetails1').value = user.address.addressDetails;
+    document.getElementById('country1').value = user.address.country;
     countryChanged("edit");
-    document.getElementById('state1').value = user.Address.state;
+    document.getElementById('state1').value = user.address.state;
     stateChanged("edit");
-    document.getElementById('city1').value = user.Address.city;
+    document.getElementById('city1').value = user.address.city;
 
     //Phone number and Gender
-    document.getElementById('phone1').value = user.phoneNo;
-    if (user.Gender === "Male") {
+    if (user.gender === "Male") {
         document.getElementById('male1').checked = true;
     } else {
         document.getElementById('female1').checked = true;
     }
-
-    //Education Details
-    document.getElementById('class1').value = user.education.class;
-    document.getElementById('Graduation1').value = user.education.graduation;
-    document.getElementById('PostGraduation1').value = user.education.postgraduation;
 }
 
+//update user
 function updateUser() {
+    document.getElementById('modal-display').style.display = "none"
     var userId = Number(localStorage.getItem('editUserId'));
 
     // Name
@@ -310,48 +420,33 @@ function updateUser() {
     var country = document.getElementById('country1').value;
     var state = document.getElementById('state1').value;
     var city = document.getElementById('city1').value;
-    console.log(country);
-    console.log(state);
-    console.log(city)
 
     //Phone number and Gender
-    var PhoneNo = document.getElementById('phone1').value;
     var Male = document.getElementById('male1');
     var female = document.getElementById('female1');
-    var GENDER = [];
+    var Gender = [];
     if (Male.checked) {
-        GENDER = "Male";
+        Gender = "Male";
     }
     else if (female.checked) {
-        GENDER = "female";
+        Gender = "female";
     }
-
-    //Education Details
-    var Class = document.getElementById('class1').value;
-    var Graduation = document.getElementById('Graduation1').value;
-    var PostGraduation = document.getElementById('PostGraduation1').value;
 
     var updatedUser = {
         id: userId,
         name: Name,
         email: Email,
         password: Password,
-        Age: Age,
+        age: Age,
         dateOfBirth: BirthDate,
-        Hobbies: hobbies,
-        Address: {
+        hobbies: hobbies,
+        address: {
             addressDetails: AddressDetails,
             country: country,
             state: state,
             city: city,
         },
-        phoneNo: PhoneNo,
-        Gender: GENDER,
-        education: {
-            class: Class,
-            graduation: Graduation,
-            postgraduation: PostGraduation,
-        },
+        gender:Gender,
     }
 
     var UserData = JSON.parse(localStorage.getItem("UserData"));
@@ -361,21 +456,19 @@ function updateUser() {
             user.name = updatedUser.name;
             user.email = updatedUser.email;
             user.password = updatedUser.password;
-            user.Age = updatedUser.Age;
+            user.age = updatedUser.age;
             user.dateOfBirth = updatedUser.dateOfBirth;
-            user.Hobbies = updatedUser.Hobbies;
-            user.Address = updatedUser.Address;
-            user.phoneNo = updatedUser.phoneNo;
-            user.Gender = updatedUser.Gender;
-            user.education = updatedUser.education;
+            user.hobbies = updatedUser.hobbies;
+            user.address = updatedUser.address;
+            user.gender = updatedUser.gender;
         }
     });
 
     localStorage.setItem("UserData", JSON.stringify(UserData));
     updateUserDataState();
-    document.getElementById("update-user").style.display = "none";
 }
 
+//delete user
 function deleteUser(id) {
     var userData = JSON.parse(localStorage.getItem("UserData"));
     userData = userData.filter(user => user.id !== id);
@@ -383,69 +476,7 @@ function deleteUser(id) {
     updateUserDataState();
 }
 
-function validation(obj) {
-    // Validation in the Application Form    
-
-    //1. Name
-    if ((obj.first.length == " ") || (obj.middle.length == ' ') || (obj.last.length == ' ') || (obj.first.length == ' ' && middle.length == ' ' && last.length == ' ')) {
-        alert('Name must be filled out');
-        return false;
-    }
-
-    else if ((obj.first.length <= 3) || (obj.middle.length <= 3) || (obj.last.length <= 3) || (obj.first.length <= 3 && obj.middle.length <= 3 && obj.last.length <= 3)) {
-        alert('Name length is greater than 3');
-        return false;
-    }
-
-    else if ((obj.first.length >= 8) || (obj.middle.length >= 8) || (obj.last.length >= 8) || (obj.first.length >= 8 && obj.middle.length >= 8 && obj.last.length >= 8)) {
-        alert('Name length is less than 8');
-        return false;
-    }
-
-    //2. Email and Password
-    if ((obj.Email.length == " ") || (obj.Password.length == " ") || (obj.Email.length == " " && obj.Password.length == " ")) {
-        alert("Email and Password must be filled out");
-        return false;
-    }
-
-    //3. Age
-    if (obj.Age < 0) {
-        alert("The age must not be negative!");
-        return false;
-    }
-    else if (obj.Age.length == " ") {
-        alert('Age must be filled out');
-        return false;
-    }
-    else if (obj.Age == 0) {
-        alert('Please enter valid age!');
-        return false;
-    }
-    else if (obj.Age > 70) {
-        alert("The age is not be greater than 70");
-        return false;
-    }
-    else if (obj.Age.length > 2) {
-        alert("The Age length is not greater than Two digit");
-        return false;
-    }
-
-    //4. Phone Number
-    if (obj.PhoneNo.length == " ") {
-        alert('Phone Number must be filled out');
-        return false;
-    }
-    else if (obj.PhoneNo.length > 10) {
-        alert('Phone Number is not be greater than 10');
-        return false;
-    }
-    else if (obj.PhoneNo.length < 0 || obj.PhoneNo.length < 10) {
-        alert('Phone Number is not be less than 10');
-        return false;
-    }
-    return true;
-}
-
+// country change
 function countryChanged(addOrEdit){
     var countryElementId = addOrEdit === "add" ? "country" : "country1";
     var stateElementId = addOrEdit === "add" ? "state" : "state1";
@@ -469,6 +500,7 @@ function countryChanged(addOrEdit){
     stateChanged(addOrEdit);
 }
 
+// state change
 function stateChanged(addOrEdit) {
     var countryElementId = addOrEdit === "add" ? "country" : "country1";
     var stateElementId = addOrEdit === "add" ? "state" : "state1";
@@ -502,6 +534,7 @@ function stateChanged(addOrEdit) {
     document.getElementById(cityElementId).innerHTML = options;
 }
 
+//Country , state and city array
 var countryStateCity = [
     {
         country: "India",
